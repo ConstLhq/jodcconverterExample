@@ -1,0 +1,43 @@
+buildscript {
+	configurations {
+    compile.exclude group:'ch.qos.logback'
+    compile.exclude module: 'slf4j-log4j12'
+}
+
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin :'application'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+mainClassName = 'com.example.demo.DemoApplication'
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	// compile group: 'org.jodconverter', name: 'jodconverter-spring', version: '4.0.0-RELEASE'
+	compile('org.jodconverter:jodconverter-spring-boot-starter:4.0.0-RELEASE')
+	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+compile group: 'org.slf4j', name: 'slf4j-api', version: '1.8.0-alpha2'
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.8.0-alpha2'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
